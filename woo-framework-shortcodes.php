@@ -1,12 +1,13 @@
 <?php
 if ( ! defined('ABSPATH') ) exit;
 /**
-* Plugin Name: Woo Framework Shortcodes
-* Plugin URI: https://github.com/anandamd/woo-framework-shortcodes
+* Plugin Name: WooFramework Shortcodes
+* Plugin URI: https://github.com/websavers/woo-framework-shortcodes
 * Description: Easily switch to a non WooThemes theme but retain the framework shortcodes. Use shortcodes from WooFramework in another theme. 
-* Author: Anand Shah
+* Forked from: Anand Shah's plugin
+* Author: Websavers Inc
 * License: GPLv2
-* Version: 1.0.0
+* Version: 2.0.0
 * */
 if ( ! class_exists( 'WF_Shortcodes' ) ) {
 	

@@ -26,7 +26,7 @@ TABLE OF CONTENTS
 15. Advanced Contact Form
 16. Tabs
   16.1 A Single Tab
-17. Dropcap
+17. Dropcap [REMOVED]
 18. Highlight
 19. Abbreviation
 20. Typography (in development)
@@ -94,55 +94,6 @@ function woo_enqueue_shortcode_js () {
 	}
 } // End woo_enqueue_shortcode_js()
 
-/*-----------------------------------------------------------------------------------*/
-/* 1.2 Ensure the Dropcap shortcode content is parsed in excerpts */
-/*-----------------------------------------------------------------------------------*/
-
-/**
- * Remove the 'wp_trim_excerpt' filter on excerpts, at the start of the main loop, so we can parse excerpts ourselves.
- * @since  6.0.0
- * @return void
- */
-function maybe_remove_trim_excerpt () {
-	if ( is_main_query() ) remove_filter( 'get_the_excerpt', 'wp_trim_excerpt' );
-} // End maybe_remove_trim_excerpt()
-add_action( 'loop_start', 'maybe_remove_trim_excerpt' );
-
-/**
- * Restore the 'wp_trim_excerpt' filter on excerpts, at the end of the main loop.
- * @since  6.0.0
- * @return void
- */
-function maybe_restore_trim_excerpt () {
-	add_filter( 'get_the_excerpt', 'wp_trim_excerpt' );
-} // End maybe_restore_trim_excerpt()
-add_action( 'loop_end', 'maybe_restore_trim_excerpt' );
-
-/**
- * Remove the 'dropcap' shortcode before outputting the excerpt, to prevent missing characters in words.
- * @since  6.0.0
- * @param  string $text The excerpt text.
- * @return string       The modified excerpt text.
- */
-function woo_remove_dropcap_from_excerpts ( $text ) {
-	global $post;
-	$original_text = $text; // Make a backup of the info passed through.
-	remove_shortcode( 'dropcap' );
-	if ( '' != $post->post_excerpt ) {
-		$text = $original_text;
-	} else {
-		$text = get_the_content();
-	}
-	$text = str_replace( '[/dropcap]', '', str_replace( '[dropcap]', '', $text ) );
-	add_shortcode( 'dropcap', 'woo_shortcode_dropcap' );
-
-	if ( function_exists( 'woo_trim_excerpt' ) ) {
-		$text = woo_trim_excerpt( $text ); // We have to create our own function, as WordPress doesn't allow filtering inside wp_trim_excerpt().
-	}
-
-	return $text;
-} // End woo_remove_dropcap_from_excerpts()
-add_filter( 'get_the_excerpt', 'woo_remove_dropcap_from_excerpts' );
 
 /*-----------------------------------------------------------------------------------*/
 /* 2. Boxes - box
@@ -1695,19 +1646,6 @@ function woo_shortcode_tab_single ( $atts, $content = null ) {
 
 add_shortcode( 'tab', 'woo_shortcode_tab_single', 99 );
 
-/*-----------------------------------------------------------------------------------*/
-/* 17. Dropcap - [dropcap][/dropcap]
-/*-----------------------------------------------------------------------------------*/
-
-function woo_shortcode_dropcap ( $atts, $content = null ) {
-	$defaults = array();
-
-	extract( shortcode_atts( $defaults, $atts ) );
-
-	return '<span class="dropcap">' . $content . '</span><!--/.dropcap-->';
-} // End woo_shortcode_dropcap()
-
-add_shortcode( 'dropcap', 'woo_shortcode_dropcap' );
 
 /*-----------------------------------------------------------------------------------*/
 /* 18. Highlight - [highlight][/highlight]
