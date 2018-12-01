@@ -115,8 +115,29 @@ function woo_shortcode_box( $atts, $content = null ) {
    									'border' => '',
    									'icon' => '' ), $atts ) );
 
-    // "Toggle in a box" fix
-   	$allowed_tags = wp_kses_allowed_html( 'post' );
+	switch($type){
+		case 'normal':
+		case 'info':
+			$icon_class = 'fas fa-info-circle';
+			break;
+		case 'alert':
+			$icon_class = 'fas fa-exclamation-circle';
+			break;
+		case 'tick':
+			$icon_class = 'fas fa-check-circle';
+			break;
+		case 'download':
+			$icon_class = 'fas fa-file-download';
+			break;
+		case 'note':
+			$icon_class = 'fas fa-sticky-note';
+			break;
+		default:
+			$icon_class = 'fas fa-info-circle';
+		
+	}
+  // "Toggle in a box" fix
+  $allowed_tags = wp_kses_allowed_html( 'post' );
 	$allowed_tags['input'] = array( 'type' => true,
 									'name' => true,
 									'value' => true );
@@ -128,12 +149,14 @@ function woo_shortcode_box( $atts, $content = null ) {
    	$custom = '';
    	if ( $icon == 'none' ) {
    		$class = 'no-icon';
-   		$custom = ' style="padding-left:15px;background-image:none;"';
+			$icon_class = '';
+   		$custom = ' style="padding-left:15px;"';
    	} elseif ( $icon ) {
    		$class = 'custom-icon';
-   		$custom = ' style="padding-left:50px;background-image:url( ' . esc_attr( esc_url( $icon ) ) . ' ); background-repeat:no-repeat; background-position:20px 45%;"';
+   		//$custom = ' style="padding-left:50px;"';
+			$icon_class = $icon;
     }
-   	return '<div class="woo-sc-box ' . esc_attr( $class ) . ' ' . esc_attr( $type ) . ' ' . esc_attr( $size ) . ' ' . esc_attr( $style ) . ' ' . esc_attr( $border ) . '"' . $custom . '>' . wp_kses( do_shortcode( woo_remove_wpautop( $content ) ), $allowed_tags, $allowed_protocols ) . '</div>';
+   	return '<div class="woo-sc-box ' . esc_attr( $class ) . ' ' . esc_attr( $type ) . ' ' . esc_attr( $size ) . ' ' . esc_attr( $style ) . ' ' . esc_attr( $border ) . '"' . $custom . '><i class="' . $icon_class . '"></i> &nbsp;' . wp_kses( do_shortcode( woo_remove_wpautop( $content ) ), $allowed_tags, $allowed_protocols ) . '</div>';
 } // End woo_shortcode_box()
 
 add_shortcode( 'box', 'woo_shortcode_box' );

@@ -30,17 +30,17 @@ TABLE OF CONTENTS:
 /*-------------------------------------------------------------------------------------------*/
 /* 1. Info Boxes */
 /*-------------------------------------------------------------------------------------------*/
-p.woo-sc-box, div.woo-sc-box {margin:1em 0 1.5em 0; padding:9px 10px 9px 50px; border-width:1px 0 1px 0; border-style:solid;color:#555;text-shadow:none;}
+p.woo-sc-box, div.woo-sc-box {margin:1em 0 1.5em 0; padding:10px 15px; border-width:1px 0 1px 0; border-style:solid;color:#555;text-shadow:none;}
 .woo-sc-box.none {border-width:0;}
 .woo-sc-box.full {border-width:1px;}
 .woo-sc-box.medium {padding:18px 20px 18px 50px; font-size:1.1em;}
 .woo-sc-box.large {padding:25px 27px 25px 50px; font-size:1.2em; }
 .woo-sc-box.rounded { -webkit-border-radius: 15px; -moz-border-radius: 15px; border-radius: 15px; }
-.woo-sc-box.alert { border-color:#f0baa2; background:#ffd9c8 url(../images/ico-alert.png) no-repeat 20px 45%; }
-.woo-sc-box.download { border-color:#d4ebaf; background:#edfcd5 url(../images/ico-download.png) no-repeat 20px 45%; }
-.woo-sc-box.tick { border-color:#d4ebaf; background:#edfcd5 url(../images/ico-tick.png) no-repeat 20px 45%; }
-.woo-sc-box.info { border-color:#ccc; background:#eee url(../images/ico-info.png) no-repeat 20px 45%; }
-.woo-sc-box.note { border-color:#efe3ae; background:#fef6d2 url(../images/ico-note.png) no-repeat 20px 45%; }
+.woo-sc-box.alert { border-color:#f0baa2; background:#ffd9c8; }
+.woo-sc-box.download { border-color:#d4ebaf; background:#edfcd5; }
+.woo-sc-box.tick { border-color:#d4ebaf; background:#edfcd5; }
+.woo-sc-box.info { border-color:#ccc; background:#eee; }
+.woo-sc-box.note { border-color:#efe3ae; background:#fef6d2; }
 .woo-sc-box.normal { border-color:#ccc; background:#eee; padding:9px 15px;}
 
 
