@@ -40,7 +40,7 @@ class WooThemes_Shortcode_Generator {
 			add_action( 'admin_footer', array( $this, 'output_dialog_markup' ) );
 
 		  	// Add the tinyMCE buttons and plugins.
-			add_filter( 'mce_buttons', array( $this, 'filter_mce_buttons' ) );
+			add_filter( 'mce_buttons_2', array( $this, 'filter_mce_buttons' ) );
 			add_filter( 'mce_external_plugins', array( $this, 'filter_mce_external_plugins' ) );
 
 			// Register the colourpicker JavaScript.

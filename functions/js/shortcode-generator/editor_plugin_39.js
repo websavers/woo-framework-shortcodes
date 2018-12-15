@@ -34,7 +34,7 @@
         // Add a button that opens a window
         editor.addButton( 'woothemes_shortcodes_button', {
 			type: 'menubutton',
-			text: 'Shortcodes',
+			text: '',
 			icon: 'wf-shortcode-icon',
 			classes: 'btn wf-shortcode-button',
 			tooltip: 'Insert a WooThemes Shortcode',
@@ -44,7 +44,6 @@
                 {text: 'Info Box', onclick: function() { editor.execCommand( 'woo_open_dialog', false, 'box', { title: 'Info Box' } ); } },
                	// Typography menu.
                 {text: 'Typography', menu: [
-                	{text: 'Dropcap', onclick: function() { editor.execCommand( 'woo_insert_immediate', false, 'dropcap', { title: 'Dropcap' } ); } },
                 	{text: 'Quote', onclick: function() { editor.execCommand( 'woo_open_dialog', false, 'quote', { title: 'Quote' } ); } },
                 	{text: 'Highlight', onclick: function() { editor.execCommand( 'woo_insert_immediate', false, 'highlight', { title: 'Highlight' } ); } },
                 	{text: 'Abbreviation', onclick: function() { editor.execCommand( 'woo_insert_immediate', false, 'abbr', { title: 'Abbreviation' } ); } },
